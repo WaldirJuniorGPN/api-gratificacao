@@ -5,7 +5,6 @@ import br.com.mundodoestudante.apigratificacao.model.Loja;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -16,7 +15,8 @@ public class CalculadoraGratificacao implements ICalculadoraGratificacao {
     private static final int SEGUNDO_COLOCADO = 1;
     private static final int TERCEIRO_COLOCADO = 2;
     private final int SEMANA_MES = 6;
-    private final BigDecimal BONUS = new BigDecimal("50.00");
+    private final BigDecimal BONUS_PRIMEIRO_COLOCADO = new BigDecimal("50.00");
+    private final BigDecimal BONUS_SEGUNDO_COLOCADO = new BigDecimal("25.00");
 
     @Override
     public void calcularOperacao(Loja loja) {
@@ -81,8 +81,8 @@ public class CalculadoraGratificacao implements ICalculadoraGratificacao {
                 Atendente atendente = listaOdenada.get(i);
                 BigDecimal gratificacao;
                 switch (i) {
-                    case PRIMEIRO_COLOCADO -> gratificacao = (atendente.getVendas().get(semana).multiply(percentualPrimeiroColocado)).add(this.BONUS);
-                    case SEGUNDO_COLOCADO -> gratificacao = atendente.getVendas().get(semana).multiply(percentualSegundoColocado);
+                    case PRIMEIRO_COLOCADO -> gratificacao = (atendente.getVendas().get(semana).multiply(percentualPrimeiroColocado)).add(this.BONUS_PRIMEIRO_COLOCADO);
+                    case SEGUNDO_COLOCADO -> gratificacao = (atendente.getVendas().get(semana).multiply(percentualSegundoColocado)).add(this.BONUS_SEGUNDO_COLOCADO);
                     case TERCEIRO_COLOCADO -> gratificacao = atendente.getVendas().get(semana).multiply(percentualTerceiroColocado);
                     default -> gratificacao = atendente.getVendas().get(semana).multiply(percentualDemaisColocados);
                 }
