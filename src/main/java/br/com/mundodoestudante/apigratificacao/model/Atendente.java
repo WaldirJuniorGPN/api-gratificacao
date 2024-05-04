@@ -34,6 +34,7 @@ public class Atendente {
     private List<BigDecimal> vendas = new ArrayList<>(6);
     private BigDecimal totalVendas = BigDecimal.ZERO;
     private BigDecimal gratificacao = BigDecimal.ZERO;
+    private BigDecimal bonus = BigDecimal.ZERO;
 
     public Atendente() {
     }
@@ -56,39 +57,43 @@ public class Atendente {
         this.gratificacao = this.gratificacao.add(valor);
     }
 
+    public void receberBonificacao(BigDecimal bonus) {
+        this.bonus = this.bonus.add(bonus);
+    }
+
     public void gravarVendasPrimeiraSemna(String valor) {
         var valorFormatado = formatarValor(valor);
-        this.somarValor(0, this.vendas.get(0),new BigDecimal(valorFormatado));
+        this.somarValor(0, this.vendas.get(0), new BigDecimal(valorFormatado));
         this.totalVendas = this.totalVendas.add(new BigDecimal(valorFormatado));
     }
 
     public void gravarVendasSegundaSemana(String valor) {
         var valorFormatado = formatarValor(valor);
-        this.somarValor(1, this.vendas.get(1),new BigDecimal(valorFormatado));
+        this.somarValor(1, this.vendas.get(1), new BigDecimal(valorFormatado));
         this.totalVendas = this.totalVendas.add(new BigDecimal(valorFormatado));
     }
 
     public void gravarVendasTerceiraSemana(String valor) {
         var valorFormatado = formatarValor(valor);
-        this.somarValor(2, this.vendas.get(2),new BigDecimal(valorFormatado));
+        this.somarValor(2, this.vendas.get(2), new BigDecimal(valorFormatado));
         this.totalVendas = this.totalVendas.add(new BigDecimal(valorFormatado));
     }
 
     public void gravarVendasQuartaSemana(String valor) {
         var valorFormatado = formatarValor(valor);
-        this.somarValor(3, this.vendas.get(3),new BigDecimal(valorFormatado));
+        this.somarValor(3, this.vendas.get(3), new BigDecimal(valorFormatado));
         this.totalVendas = this.totalVendas.add(new BigDecimal(valorFormatado));
     }
 
     public void gravarVendasQuintaSemana(String valor) {
         var valorFormatado = formatarValor(valor);
-        this.somarValor(4, this.vendas.get(4),new BigDecimal(valorFormatado));
+        this.somarValor(4, this.vendas.get(4), new BigDecimal(valorFormatado));
         this.totalVendas = this.totalVendas.add(new BigDecimal(valorFormatado));
     }
 
     public void gravarVendasSextaSemana(String valor) {
         var valorFormatado = formatarValor(valor);
-        this.somarValor(5, this.vendas.get(5),new BigDecimal(valorFormatado));
+        this.somarValor(5, this.vendas.get(5), new BigDecimal(valorFormatado));
         this.totalVendas = this.totalVendas.add(new BigDecimal(valorFormatado));
     }
 
@@ -106,6 +111,10 @@ public class Atendente {
         DecimalFormat df = new DecimalFormat("#0.00");
         String vendasFormatadas = df.format(this.totalVendas);
         String gratificacaoFormatada = df.format(this.gratificacao);
-        return this.nome + " - Vendas: " + vendasFormatadas + " - Gratificação: " + gratificacaoFormatada;
+        String bonusFormatado = df.format(this.bonus);
+
+        return String.format("%-15s | Vendas: %-10s | Gratificação: %-10s | Bonus: %-10s",
+                this.nome, vendasFormatadas, gratificacaoFormatada, bonusFormatado);
     }
+
 }

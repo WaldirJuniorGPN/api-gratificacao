@@ -81,8 +81,14 @@ public class CalculadoraGratificacao implements ICalculadoraGratificacao {
                 Atendente atendente = listaOdenada.get(i);
                 BigDecimal gratificacao;
                 switch (i) {
-                    case PRIMEIRO_COLOCADO -> gratificacao = (atendente.getVendas().get(semana).multiply(percentualPrimeiroColocado)).add(this.BONUS_PRIMEIRO_COLOCADO);
-                    case SEGUNDO_COLOCADO -> gratificacao = (atendente.getVendas().get(semana).multiply(percentualSegundoColocado)).add(this.BONUS_SEGUNDO_COLOCADO);
+                    case PRIMEIRO_COLOCADO -> {
+                        gratificacao = atendente.getVendas().get(semana).multiply(percentualPrimeiroColocado);
+                        atendente.receberBonificacao(this.BONUS_PRIMEIRO_COLOCADO);
+                    }
+                    case SEGUNDO_COLOCADO -> {
+                        gratificacao = atendente.getVendas().get(semana).multiply(percentualSegundoColocado);
+                        atendente.receberBonificacao(this.BONUS_SEGUNDO_COLOCADO);
+                    }
                     case TERCEIRO_COLOCADO -> gratificacao = atendente.getVendas().get(semana).multiply(percentualTerceiroColocado);
                     default -> gratificacao = atendente.getVendas().get(semana).multiply(percentualDemaisColocados);
                 }
