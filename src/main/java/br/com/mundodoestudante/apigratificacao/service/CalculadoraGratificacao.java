@@ -38,7 +38,42 @@ public class CalculadoraGratificacao implements ICalculadoraGratificacao {
         var percentualSegundoColocado = new BigDecimal("0.008");
         var percentualTerceiroColocado = new BigDecimal("0.004");
         var percentualDemaisColocados = new BigDecimal("0.002");
+        this.escolherCalculadora(atendentes, percentualPrimeiroColocado, percentualSegundoColocado, percentualTerceiroColocado, percentualDemaisColocados);
+    }
 
+    private void calculadoraLapis(List<Atendente> atendentes) {
+        var percentualPrimeiroColocado = new BigDecimal("0.012");
+        var percentualSegundoColocado = new BigDecimal("0.008");
+        var percentualTerceiroColocado = new BigDecimal("0.004");
+        var percentualDemaisColocados = new BigDecimal("0.002");
+        this.escolherCalculadora(atendentes, percentualPrimeiroColocado, percentualSegundoColocado, percentualTerceiroColocado, percentualDemaisColocados);
+    }
+
+    private void calculadoraPlaneta(List<Atendente> atendentes) {
+        var percentualPrimeiroColocado = new BigDecimal("0.012");
+        var percentualSegundoColocado = new BigDecimal("0.008");
+        var percentualTerceiroColocado = new BigDecimal("0.004");
+        var percentualDemaisColocados = new BigDecimal("0.002");
+        this.escolherCalculadora(atendentes, percentualPrimeiroColocado, percentualSegundoColocado, percentualTerceiroColocado, percentualDemaisColocados);
+    }
+
+    private void calculadoraSonho(List<Atendente> atendentes) {
+        var percentualPrimeiroColocado = new BigDecimal("0.012");
+        var percentualSegundoColocado = new BigDecimal("0.008");
+        var percentualTerceiroColocado = new BigDecimal("0.004");
+        var percentualDemaisColocados = new BigDecimal("0.002");
+        this.escolherCalculadora(atendentes, percentualPrimeiroColocado, percentualSegundoColocado, percentualTerceiroColocado, percentualDemaisColocados);
+    }
+
+    private void calculadoraCasa(List<Atendente> atendentes) {
+        var percentualPrimeiroColocado = new BigDecimal("0.010");
+        var percentualSegundoColocado = new BigDecimal("0.005");
+        var percentualTerceiroColocado = new BigDecimal("0.002");
+        var percentualDemaisColocados = new BigDecimal("0.001");
+        this.escolherCalculadora(atendentes, percentualPrimeiroColocado, percentualSegundoColocado, percentualTerceiroColocado, percentualDemaisColocados);
+    }
+
+    private void escolherCalculadora(List<Atendente> atendentes, BigDecimal percentualPrimeiroColocado, BigDecimal percentualSegundoColocado, BigDecimal percentualTerceiroColocado, BigDecimal percentualDemaisColocados) {
         var condicao = new AtomicBoolean(false);
 
         atendentes.forEach(atendente -> {
@@ -50,42 +85,10 @@ public class CalculadoraGratificacao implements ICalculadoraGratificacao {
         });
 
         if (condicao.get()) {
-            this.calculadora(atendentes, percentualPrimeiroColocado, percentualSegundoColocado, percentualTerceiroColocado, percentualDemaisColocados);
-        } else {
             this.calculadoraComAtendimentos(atendentes, percentualPrimeiroColocado, percentualSegundoColocado, percentualTerceiroColocado, percentualDemaisColocados);
+        } else {
+            this.calculadoraComum(atendentes, percentualPrimeiroColocado, percentualSegundoColocado, percentualTerceiroColocado, percentualDemaisColocados);
         }
-    }
-
-    private void calculadoraLapis(List<Atendente> atendentes) {
-        var percentualPrimeiroColocado = new BigDecimal("0.012");
-        var percentualSegundoColocado = new BigDecimal("0.008");
-        var percentualTerceiroColocado = new BigDecimal("0.004");
-        var percentualDemaisColocados = new BigDecimal("0.002");
-        this.calculadora(atendentes, percentualPrimeiroColocado, percentualSegundoColocado, percentualTerceiroColocado, percentualDemaisColocados);
-    }
-
-    private void calculadoraPlaneta(List<Atendente> atendentes) {
-        var percentualPrimeiroColocado = new BigDecimal("0.012");
-        var percentualSegundoColocado = new BigDecimal("0.008");
-        var percentualTerceiroColocado = new BigDecimal("0.004");
-        var percentualDemaisColocados = new BigDecimal("0.002");
-        this.calculadora(atendentes, percentualPrimeiroColocado, percentualSegundoColocado, percentualTerceiroColocado, percentualDemaisColocados);
-    }
-
-    private void calculadoraSonho(List<Atendente> atendentes) {
-        var percentualPrimeiroColocado = new BigDecimal("0.012");
-        var percentualSegundoColocado = new BigDecimal("0.008");
-        var percentualTerceiroColocado = new BigDecimal("0.004");
-        var percentualDemaisColocados = new BigDecimal("0.002");
-        this.calculadora(atendentes, percentualPrimeiroColocado, percentualSegundoColocado, percentualTerceiroColocado, percentualDemaisColocados);
-    }
-
-    private void calculadoraCasa(List<Atendente> atendentes) {
-        var percentualPrimeiroColocado = new BigDecimal("0.010");
-        var percentualSegundoColocado = new BigDecimal("0.005");
-        var percentualTerceiroColocado = new BigDecimal("0.002");
-        var percentualDemaisColocados = new BigDecimal("0.001");
-        this.calculadora(atendentes, percentualPrimeiroColocado, percentualSegundoColocado, percentualTerceiroColocado, percentualDemaisColocados);
     }
 
     private void calculadoraComAtendimentos(List<Atendente> atendentes, BigDecimal percentualPrimeiroColocado, BigDecimal percentualSegundoColocado, BigDecimal percentualTerceiroColocado, BigDecimal percentualDemaisColocados) {
@@ -107,19 +110,24 @@ public class CalculadoraGratificacao implements ICalculadoraGratificacao {
                 }
                 atendente.registraGratificacao(gratificacao);
             }
+
+
             var listaOdenadaPorAtendimento = atendentes.stream().sorted(Comparator.comparing(a -> a.getAtendimentos().get(semanaAtual))).collect(Collectors.toList());
             Collections.reverse(listaOdenadaPorAtendimento);
             for (int i = 0; i < listaOdenadaPorAtendimento.size(); i++) {
                 var atendente = listaOdenadaPorAtendimento.get(i);
-                switch (i) {
-                    case PRIMEIRO_COLOCADO -> atendente.receberBonificacao(this.BONUS_PRIMEIRO_COLOCADO);
-                    case SEGUNDO_COLOCADO -> atendente.receberBonificacao(this.BONUS_SEGUNDO_COLOCADO);
+                var quantidadeAtendimentos = atendente.getAtendimentos().get(semanaAtual);
+                if (quantidadeAtendimentos > 0) {
+                    switch (i) {
+                        case PRIMEIRO_COLOCADO -> atendente.receberBonificacao(this.BONUS_PRIMEIRO_COLOCADO);
+                        case SEGUNDO_COLOCADO -> atendente.receberBonificacao(this.BONUS_SEGUNDO_COLOCADO);
+                    }
                 }
             }
         }
     }
 
-    private void calculadora(List<Atendente> atendentes, BigDecimal percentualPrimeiroColocado, BigDecimal percentualSegundoColocado, BigDecimal percentualTerceiroColocado, BigDecimal percentualDemaisColocados) {
+    private void calculadoraComum(List<Atendente> atendentes, BigDecimal percentualPrimeiroColocado, BigDecimal percentualSegundoColocado, BigDecimal percentualTerceiroColocado, BigDecimal percentualDemaisColocados) {
         for (int semana = 0; semana < SEMANA_MES; semana++) {
             final int semanaAtual = semana;
             var listaOdenada = atendentes.stream().sorted(Comparator.comparing(atendente -> atendente.getVendas().get(semanaAtual))).collect(Collectors.toList());
@@ -130,11 +138,17 @@ public class CalculadoraGratificacao implements ICalculadoraGratificacao {
                 switch (i) {
                     case PRIMEIRO_COLOCADO -> {
                         gratificacao = atendente.getVendas().get(semana).multiply(percentualPrimeiroColocado);
-                        atendente.receberBonificacao(this.BONUS_PRIMEIRO_COLOCADO);
+                        var vendas = atendente.getVendas().get(semana);
+                        if (vendas.compareTo(BigDecimal.ZERO) > 0) {
+                            atendente.receberBonificacao(this.BONUS_PRIMEIRO_COLOCADO);
+                        }
                     }
                     case SEGUNDO_COLOCADO -> {
                         gratificacao = atendente.getVendas().get(semana).multiply(percentualSegundoColocado);
-                        atendente.receberBonificacao(this.BONUS_SEGUNDO_COLOCADO);
+                        var vendas = atendente.getVendas().get(semana);
+                        if (vendas.compareTo(BigDecimal.ZERO) > 0) {
+                            atendente.receberBonificacao(this.BONUS_SEGUNDO_COLOCADO);
+                        }
                     }
                     case TERCEIRO_COLOCADO ->
                             gratificacao = atendente.getVendas().get(semana).multiply(percentualTerceiroColocado);
