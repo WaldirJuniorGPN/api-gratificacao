@@ -35,10 +35,7 @@ public class Principal {
     public void start() {
 
         var costa = new Atendente("Costa", ELoja.MUNDO);
-        var grasielly = new Atendente("Grasielly", ELoja.MUNDO);
-        var isabele = new Atendente("Isabele", ELoja.MUNDO);
         var janaina = new Atendente("Janaína", ELoja.MUNDO);
-        var julia = new Atendente("Júlia", ELoja.MUNDO);
         var kawan = new Atendente("Kawan", ELoja.MUNDO);
         var lucas = new Atendente("Lucas", ELoja.MUNDO);
         var loja = new Atendente("Loja", ELoja.MUNDO);
@@ -48,6 +45,7 @@ public class Principal {
         var thaina = new Atendente("Thainá", ELoja.MUNDO);
         var vinicius = new Atendente("Vinícius", ELoja.MUNDO);
         var alvaro = new Atendente("Álvaro", ELoja.MUNDO);
+        var apoio = new Atendente("Apoio", ELoja.MUNDO);
 
         var amanda = new Atendente("Amanda", ELoja.LAPIS);
         var cintiane = new Atendente("Cintiane", ELoja.LAPIS);
@@ -70,6 +68,7 @@ public class Principal {
         var dani = new Atendente("Dani", ELoja.SONHO);
         var isabeleSonho = new Atendente("Isabele Sonho", ELoja.SONHO);
         var beatrizSonho = new Atendente("Beatriz Sonho", ELoja.SONHO);
+        var valeriaSonho = new Atendente("Valéria Sonho", ELoja.SONHO);
 
         var beatrizCasa = new Atendente("Beatriz Casa", ELoja.CASA);
         var juliana = new Atendente("Juliana", ELoja.CASA);
@@ -77,67 +76,71 @@ public class Principal {
         var valeria = new Atendente("Valéria", ELoja.CASA);
         var camilaCasa = new Atendente("Camila Casa", ELoja.CASA);
 
-        costa.gravarVendasPrimeiraSemna("0,00");
-        grasielly.gravarVendasPrimeiraSemna("0,00");
-        isabele.gravarVendasPrimeiraSemna("0,00");
-        janaina.gravarVendasPrimeiraSemna("0,00");
-        julia.gravarVendasPrimeiraSemna("0,00");
-        kawan.gravarVendasPrimeiraSemna("0,00");
-        lucas.gravarVendasPrimeiraSemna("0,00");
-        loja.gravarVendasPrimeiraSemna("0,00");
-        nailton.gravarVendasPrimeiraSemna("0,00");
-        pedro.gravarVendasPrimeiraSemna("0,00");
-        samuel.gravarVendasPrimeiraSemna("0,00");
-        thaina.gravarVendasPrimeiraSemna("0,00");
-        vinicius.gravarVendasPrimeiraSemna("0,00");
+        alvaro.gravarVendasPrimeiraSemna("372,55");
+        costa.gravarVendasPrimeiraSemna("4852,23");
+        janaina.gravarVendasPrimeiraSemna("7213,25");
+        kawan.gravarVendasPrimeiraSemna("24,63");
+        lucas.gravarVendasPrimeiraSemna("944,28");
+        loja.gravarVendasPrimeiraSemna("25,68");
+        loja.gravarVendasPrimeiraSemna("6550,18");
+        loja.gravarVendasPrimeiraSemna("24,90");
+        nailton.gravarVendasPrimeiraSemna("3830,96");
+        pedro.gravarVendasPrimeiraSemna("5060,98");
+        samuel.gravarVendasPrimeiraSemna("4920,84");
+        thaina.gravarVendasPrimeiraSemna("9119,30");
+        vinicius.gravarVendasPrimeiraSemna("7965,80");
 
-        alvaro.gravarVendasSegundaSemana("0,00");
-        grasielly.gravarVendasSegundaSemana("0,00");
-        isabele.gravarVendasSegundaSemana("0,00");
-        janaina.gravarVendasSegundaSemana("0,00");
-        julia.gravarVendasSegundaSemana("0,00");
+        alvaro.gravarVendasSegundaSemana("13,65");
+        apoio.gravarVendasSegundaSemana("652,00");
+        costa.gravarVendasSegundaSemana("8548,09");
+        janaina.gravarVendasSegundaSemana("4823,84");
+        lucas.gravarVendasSegundaSemana("1307,38");
+        loja.gravarVendasSegundaSemana("5033,24");
+        nailton.gravarVendasSegundaSemana("5193,15");
+        pedro.gravarVendasSegundaSemana("6638,19");
         kawan.gravarVendasSegundaSemana("0,00");
-        lucas.gravarVendasSegundaSemana("0,00");
-        loja.gravarVendasSegundaSemana("0,00");
-        nailton.gravarVendasSegundaSemana("0,00");
-        pedro.gravarVendasSegundaSemana("0,00");
-        samuel.gravarVendasSegundaSemana("0,00");
-        thaina.gravarVendasSegundaSemana("0,00");
-        vinicius.gravarVendasSegundaSemana("0,00");
+        samuel.gravarVendasSegundaSemana("4440,35");
+        thaina.gravarVendasSegundaSemana("10317,61");
+        vinicius.gravarVendasSegundaSemana("6566,38");
 
-        alvaro.gravarVendasTerceiraSemana("0,00");
-        grasielly.gravarVendasTerceiraSemana("0,00");
-        janaina.gravarVendasTerceiraSemana("0,00");
+        alvaro.gravarVendasTerceiraSemana("190,66");
+        costa.gravarVendasTerceiraSemana("6224,35");
+        janaina.gravarVendasTerceiraSemana("3127,38");
+        lucas.gravarVendasTerceiraSemana("2316,09");
         kawan.gravarVendasTerceiraSemana("0,00");
-        loja.gravarVendasTerceiraSemana("0,00");
-        nailton.gravarVendasTerceiraSemana("0,00");
-        pedro.gravarVendasTerceiraSemana("0,00");
-        samuel.gravarVendasTerceiraSemana("0,00");
-        thaina.gravarVendasTerceiraSemana("0,00");
-        vinicius.gravarVendasTerceiraSemana("0,00");
+        loja.gravarVendasTerceiraSemana("2994,44");
+        nailton.gravarVendasTerceiraSemana("4499,49");
+        pedro.gravarVendasTerceiraSemana("6923,42");
+        samuel.gravarVendasTerceiraSemana("3149,20");
+        thaina.gravarVendasTerceiraSemana("8534,83");
+        vinicius.gravarVendasTerceiraSemana("5399,88");
 
-        alvaro.gravarVendasQuartaSemana("0,00");
-        grasielly.gravarVendasQuartaSemana("0,00");
-        janaina.gravarVendasQuartaSemana("0,00");
+        alvaro.gravarVendasQuartaSemana("169,61");
+        apoio.gravarVendasQuartaSemana("5640,79");
+        costa.gravarVendasQuartaSemana("3567,96");
+        janaina.gravarVendasQuartaSemana("6400,76");
+        lucas.gravarVendasQuartaSemana("1460,66");
         kawan.gravarVendasQuartaSemana("0,00");
-        loja.gravarVendasQuartaSemana("0,00");
-        nailton.gravarVendasQuartaSemana("0,00");
-        pedro.gravarVendasQuartaSemana("0,00");
-        samuel.gravarVendasQuartaSemana("0,00");
-        thaina.gravarVendasQuartaSemana("0,00");
-        vinicius.gravarVendasQuartaSemana("0,00");
+        loja.gravarVendasQuartaSemana("3118,92");
+        loja.gravarVendasQuartaSemana("208,13");
+        nailton.gravarVendasQuartaSemana("2509,41");
+        pedro.gravarVendasQuartaSemana("6349,26");
+        samuel.gravarVendasQuartaSemana("1839,55");
+        thaina.gravarVendasQuartaSemana("7950,85");
+        vinicius.gravarVendasQuartaSemana("4807,94");
 
         alvaro.gravarVendasQuintaSemana("0,00");
-        costa.gravarVendasQuintaSemana("0,00");
-        grasielly.gravarVendasQuintaSemana("0,00");
-        janaina.gravarVendasQuintaSemana("0,00");
+        apoio.gravarVendasQuintaSemana("2778,93");
+        costa.gravarVendasQuintaSemana("1118,11");
+        janaina.gravarVendasQuintaSemana("782,96");
+        lucas.gravarVendasQuintaSemana("570,59");
         kawan.gravarVendasQuintaSemana("0,00");
-        loja.gravarVendasQuintaSemana("0,00");
-        nailton.gravarVendasQuintaSemana("0,00");
-        pedro.gravarVendasQuintaSemana("0,00");
-        samuel.gravarVendasQuintaSemana("0,00");
-        thaina.gravarVendasQuintaSemana("0,00");
-        vinicius.gravarVendasQuintaSemana("0,00");
+        loja.gravarVendasQuintaSemana("928,32");
+        nailton.gravarVendasQuintaSemana("2789,14");
+        pedro.gravarVendasQuintaSemana("1300,35");
+        samuel.gravarVendasQuintaSemana("672,44");
+        thaina.gravarVendasQuintaSemana("3004,87");
+        vinicius.gravarVendasQuintaSemana("432,77");
 
         //LÁPIS NA MÃO
         amanda.gravarVendasPrimeiraSemna("7315,06");
@@ -205,76 +208,84 @@ public class Principal {
 
         //SONHO DE BEBÊ
 
-        bruna.gravarVendasPrimeiraSemna("0,00");
+        bruna.gravarVendasPrimeiraSemna("6655,56");
+        dani.gravarVendasPrimeiraSemna("2683,43");
+        isabeleSonho.gravarVendasPrimeiraSemna("6222,45");
+        sara.gravarVendasPrimeiraSemna("8721,51");
         camila.gravarVendasPrimeiraSemna("0,00");
         karol.gravarVendasPrimeiraSemna("0,00");
-        sara.gravarVendasPrimeiraSemna("0,00");
-        lojaSonho.gravarVendasPrimeiraSemna("0,00");
+        lojaSonho.gravarVendasPrimeiraSemna("424,33");
 
         alef.gravarVendasSegundaSemana("0,00");
-        bruna.gravarVendasSegundaSemana("0,00");
+        bruna.gravarVendasSegundaSemana("10480,52");
         camila.gravarVendasSegundaSemana("0,00");
-        dani.gravarVendasSegundaSemana("0,00");
+        dani.gravarVendasSegundaSemana("755,51");
         karol.gravarVendasSegundaSemana("0,00");
-        sara.gravarVendasSegundaSemana("0,00");
-        lojaSonho.gravarVendasSegundaSemana("0,00");
-        isabeleSonho.gravarVendasSegundaSemana("0,00");
+        sara.gravarVendasSegundaSemana("8267,67");
+        lojaSonho.gravarVendasSegundaSemana("256,48");
+        isabeleSonho.gravarVendasSegundaSemana("5270,54");
+        valeriaSonho.gravarVendasSegundaSemana("1980,29");
 
         beatrizSonho.gravarVendasTerceiraSemana("0,00");
-        bruna.gravarVendasTerceiraSemana("0,00");
-        dani.gravarVendasTerceiraSemana("0,00");
-        lojaSonho.gravarVendasTerceiraSemana("0,00");
+        bruna.gravarVendasTerceiraSemana("11284,50");
+        dani.gravarVendasTerceiraSemana("224,78");
+        lojaSonho.gravarVendasTerceiraSemana("318,12");
         karol.gravarVendasTerceiraSemana("0,00");
-        sara.gravarVendasTerceiraSemana("0,00");
+        sara.gravarVendasTerceiraSemana("9422,58");
         lojaSonho.gravarVendasTerceiraSemana("0,00");
-        isabeleSonho.gravarVendasTerceiraSemana("0,00");
+        isabeleSonho.gravarVendasTerceiraSemana("3682,72");
 
-        bruna.gravarVendasQuartaSemana("0,00");
-        dani.gravarVendasQuartaSemana("0,00");
+        bruna.gravarVendasQuartaSemana("7800,87");
+        dani.gravarVendasQuartaSemana("624,69");
         karol.gravarVendasQuartaSemana("0,00");
-        sara.gravarVendasQuartaSemana("0,00");
+        sara.gravarVendasQuartaSemana("8916,49");
         lojaSonho.gravarVendasQuartaSemana("0,00");
-        isabeleSonho.gravarVendasQuartaSemana("0,00");
+        isabeleSonho.gravarVendasQuartaSemana("4934,17");
 
-        bruna.gravarVendasQuintaSemana("0,00");
-        dani.gravarVendasQuintaSemana("0,00");
+        bruna.gravarVendasQuintaSemana("3774,32");
+        dani.gravarVendasQuintaSemana("210,88");
         karol.gravarVendasQuintaSemana("0,00");
-        sara.gravarVendasQuintaSemana("0,00");
+        sara.gravarVendasQuintaSemana("5385,13");
         lojaSonho.gravarVendasQuintaSemana("0,00");
-        isabeleSonho.gravarVendasQuintaSemana("0,00");
+        isabeleSonho.gravarVendasQuintaSemana("1111,69");
 
         // CASA DO BEBÊ
-        beatrizCasa.gravarVendasPrimeiraSemna("0,00");
-        juliana.gravarVendasPrimeiraSemna("0,00");
-        lojaCasa.gravarVendasPrimeiraSemna("0,00");
-        valeria.gravarVendasPrimeiraSemna("0,00");
+        beatrizCasa.gravarVendasPrimeiraSemna("10241,83");
+        juliana.gravarVendasPrimeiraSemna("3340,10");
+        lojaCasa.gravarVendasPrimeiraSemna("121,85");
+        lojaCasa.gravarVendasPrimeiraSemna("405,00");
+        valeria.gravarVendasPrimeiraSemna("4539,85");
         camilaCasa.gravarVendasPrimeiraSemna("0,00");
 
-        beatrizCasa.gravarVendasSegundaSemana("0,00");
+        beatrizCasa.gravarVendasSegundaSemana("6415,62");
         camilaCasa.gravarVendasSegundaSemana("0,00");
         camilaCasa.gravarVendasSegundaSemana("0,00");
-        juliana.gravarVendasSegundaSemana("0,00");
-        lojaCasa.gravarVendasSegundaSemana("0,00");
-        lojaCasa.gravarVendasSegundaSemana("0,00");
+        juliana.gravarVendasSegundaSemana("3924,69");
+        lojaCasa.gravarVendasSegundaSemana("444,99");
+        lojaCasa.gravarVendasSegundaSemana("461,00");
+        valeria.gravarVendasSegundaSemana("12377,79");
+        valeria.gravarVendasSegundaSemana("1980,29");
 
-        beatrizCasa.gravarVendasTerceiraSemana("0,00");
+        beatrizCasa.gravarVendasTerceiraSemana("7738,66");
         beatrizCasa.gravarVendasTerceiraSemana("0,00");
         camilaCasa.gravarVendasTerceiraSemana("0,00");
-        juliana.gravarVendasTerceiraSemana("0,00");
-        lojaCasa.gravarVendasTerceiraSemana("0,00");
-        lojaCasa.gravarVendasTerceiraSemana("0,00");
+        juliana.gravarVendasTerceiraSemana("1955,03");
+        lojaCasa.gravarVendasTerceiraSemana("9,98");
+        lojaCasa.gravarVendasTerceiraSemana("600,00");
+        valeria.gravarVendasTerceiraSemana("4397,31");
 
-        beatrizCasa.gravarVendasQuartaSemana("0,00");
+        beatrizCasa.gravarVendasQuartaSemana("3683,65");
         camilaCasa.gravarVendasQuartaSemana("0,00");
-        juliana.gravarVendasQuartaSemana("0,00");
-        lojaCasa.gravarVendasQuartaSemana("0,00");
-        lojaCasa.gravarVendasQuartaSemana("0,00");
+        juliana.gravarVendasQuartaSemana("3560,07");
+        lojaCasa.gravarVendasQuartaSemana("23,99");
+        lojaCasa.gravarVendasQuartaSemana("396,00");
+        valeria.gravarVendasQuartaSemana("2865,05");
 
-        beatrizCasa.gravarVendasQuintaSemana("0,00");
+        beatrizCasa.gravarVendasQuintaSemana("859,47");
         camilaCasa.gravarVendasQuintaSemana("0,00");
-        juliana.gravarVendasQuintaSemana("0,00");
-        lojaCasa.gravarVendasQuintaSemana("0,00");
-        lojaCasa.gravarVendasQuintaSemana("0,00");
+        juliana.gravarVendasQuintaSemana("1025,91");
+        lojaCasa.gravarVendasQuintaSemana("142,00");
+        valeria.gravarVendasQuintaSemana("1052,39");
 
 
         for (Atendente atendente : Atendente.getAtendentes()) {

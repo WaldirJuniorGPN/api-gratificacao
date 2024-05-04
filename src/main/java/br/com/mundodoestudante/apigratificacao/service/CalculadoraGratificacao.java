@@ -83,13 +83,21 @@ public class CalculadoraGratificacao implements ICalculadoraGratificacao {
                 switch (i) {
                     case PRIMEIRO_COLOCADO -> {
                         gratificacao = atendente.getVendas().get(semana).multiply(percentualPrimeiroColocado);
-                        atendente.receberBonificacao(this.BONUS_PRIMEIRO_COLOCADO);
+                        var vendas = atendente.getVendas().get(semana);
+                        if (vendas.compareTo(BigDecimal.ZERO) > 0) {
+                            atendente.receberBonificacao(this.BONUS_PRIMEIRO_COLOCADO);
+                        }
+
                     }
                     case SEGUNDO_COLOCADO -> {
                         gratificacao = atendente.getVendas().get(semana).multiply(percentualSegundoColocado);
-                        atendente.receberBonificacao(this.BONUS_SEGUNDO_COLOCADO);
+                        var vendas = atendente.getVendas().get(semana);
+                        if (vendas.compareTo(BigDecimal.ZERO) > 0) {
+                            atendente.receberBonificacao(this.BONUS_SEGUNDO_COLOCADO);
+                        }
                     }
-                    case TERCEIRO_COLOCADO -> gratificacao = atendente.getVendas().get(semana).multiply(percentualTerceiroColocado);
+                    case TERCEIRO_COLOCADO ->
+                            gratificacao = atendente.getVendas().get(semana).multiply(percentualTerceiroColocado);
                     default -> gratificacao = atendente.getVendas().get(semana).multiply(percentualDemaisColocados);
                 }
                 atendente.registraGratificacao(gratificacao);

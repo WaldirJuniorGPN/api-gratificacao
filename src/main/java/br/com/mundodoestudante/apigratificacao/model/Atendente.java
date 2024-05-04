@@ -116,5 +116,4 @@ public class Atendente {
         return String.format("%-15s | Vendas: %-10s | Gratificação: %-10s | Bonus: %-10s",
                 this.nome, vendasFormatadas, gratificacaoFormatada, bonusFormatado);
     }
-
 }
