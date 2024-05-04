@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.Collectors;
 
 @Service
@@ -37,7 +38,22 @@ public class CalculadoraGratificacao implements ICalculadoraGratificacao {
         var percentualSegundoColocado = new BigDecimal("0.008");
         var percentualTerceiroColocado = new BigDecimal("0.004");
         var percentualDemaisColocados = new BigDecimal("0.002");
-        this.calculadora(atendentes, percentualPrimeiroColocado, percentualSegundoColocado, percentualTerceiroColocado, percentualDemaisColocados);
+
+        var condicao = new AtomicBoolean(false);
+
+        atendentes.forEach(atendente -> {
+            atendente.getAtendimentos().forEach(atendimento -> {
+                if (atendimento > 0) {
+                    condicao.set(true);
+                }
+            });
+        });
+
+        if (condicao.get()) {
+            this.calculadora(atendentes, percentualPrimeiroColocado, percentualSegundoColocado, percentualTerceiroColocado, percentualDemaisColocados);
+        } else {
+            this.calculadoraComAtendimentos(atendentes, percentualPrimeiroColocado, percentualSegundoColocado, percentualTerceiroColocado, percentualDemaisColocados);
+        }
     }
 
     private void calculadoraLapis(List<Atendente> atendentes) {
@@ -72,6 +88,37 @@ public class CalculadoraGratificacao implements ICalculadoraGratificacao {
         this.calculadora(atendentes, percentualPrimeiroColocado, percentualSegundoColocado, percentualTerceiroColocado, percentualDemaisColocados);
     }
 
+    private void calculadoraComAtendimentos(List<Atendente> atendentes, BigDecimal percentualPrimeiroColocado, BigDecimal percentualSegundoColocado, BigDecimal percentualTerceiroColocado, BigDecimal percentualDemaisColocados) {
+        for (int semana = 0; semana < SEMANA_MES; semana++) {
+            final int semanaAtual = semana;
+            var listaOdenada = atendentes.stream().sorted(Comparator.comparing(atendente -> atendente.getVendas().get(semanaAtual))).collect(Collectors.toList());
+            Collections.reverse(listaOdenada);
+            for (int i = 0; i < listaOdenada.size(); i++) {
+                Atendente atendente = listaOdenada.get(i);
+                BigDecimal gratificacao;
+                switch (i) {
+                    case PRIMEIRO_COLOCADO ->
+                            gratificacao = atendente.getVendas().get(semana).multiply(percentualPrimeiroColocado);
+                    case SEGUNDO_COLOCADO ->
+                            gratificacao = atendente.getVendas().get(semana).multiply(percentualSegundoColocado);
+                    case TERCEIRO_COLOCADO ->
+                            gratificacao = atendente.getVendas().get(semana).multiply(percentualTerceiroColocado);
+                    default -> gratificacao = atendente.getVendas().get(semana).multiply(percentualDemaisColocados);
+                }
+                atendente.registraGratificacao(gratificacao);
+            }
+            var listaOdenadaPorAtendimento = atendentes.stream().sorted(Comparator.comparing(a -> a.getAtendimentos().get(semanaAtual))).collect(Collectors.toList());
+            Collections.reverse(listaOdenadaPorAtendimento);
+            for (int i = 0; i < listaOdenadaPorAtendimento.size(); i++) {
+                var atendente = listaOdenadaPorAtendimento.get(i);
+                switch (i) {
+                    case PRIMEIRO_COLOCADO -> atendente.receberBonificacao(this.BONUS_PRIMEIRO_COLOCADO);
+                    case SEGUNDO_COLOCADO -> atendente.receberBonificacao(this.BONUS_SEGUNDO_COLOCADO);
+                }
+            }
+        }
+    }
+
     private void calculadora(List<Atendente> atendentes, BigDecimal percentualPrimeiroColocado, BigDecimal percentualSegundoColocado, BigDecimal percentualTerceiroColocado, BigDecimal percentualDemaisColocados) {
         for (int semana = 0; semana < SEMANA_MES; semana++) {
             final int semanaAtual = semana;
@@ -89,7 +136,8 @@ public class CalculadoraGratificacao implements ICalculadoraGratificacao {
                         gratificacao = atendente.getVendas().get(semana).multiply(percentualSegundoColocado);
                         atendente.receberBonificacao(this.BONUS_SEGUNDO_COLOCADO);
                     }
-                    case TERCEIRO_COLOCADO -> gratificacao = atendente.getVendas().get(semana).multiply(percentualTerceiroColocado);
+                    case TERCEIRO_COLOCADO ->
+                            gratificacao = atendente.getVendas().get(semana).multiply(percentualTerceiroColocado);
                     default -> gratificacao = atendente.getVendas().get(semana).multiply(percentualDemaisColocados);
                 }
                 atendente.registraGratificacao(gratificacao);

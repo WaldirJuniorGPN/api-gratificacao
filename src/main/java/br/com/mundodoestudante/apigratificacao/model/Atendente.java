@@ -17,6 +17,13 @@ import java.util.Locale;
 @EqualsAndHashCode(of = "id")
 public class Atendente {
 
+    private final int PRIMEIRA_SEMANA = 0;
+    private final int SEGUNDA_SEMANA = 1;
+    private final int TERCEIRA_SEMANA = 2;
+    private final int QUARTA_SEMANA = 3;
+    private final int QUINTA_SEMANA = 4;
+    private final int SEXTA_SEMANA = 5;
+
     @Getter
     private static List<Atendente> atendentes = new ArrayList<>();
 
@@ -32,6 +39,7 @@ public class Atendente {
     private Loja loja;
     @Getter
     private List<BigDecimal> vendas = new ArrayList<>(6);
+    private List<Integer> atendimentos = new ArrayList<>(6);
     private BigDecimal totalVendas = BigDecimal.ZERO;
     private BigDecimal gratificacao = BigDecimal.ZERO;
     private BigDecimal bonus = BigDecimal.ZERO;
@@ -44,6 +52,7 @@ public class Atendente {
         this.nomeLoja = loja;
         for (int i = 0; i < 6; i++) {
             this.vendas.add(BigDecimal.ZERO);
+            this.atendimentos.add(0);
         }
         atendentes.add(this);
     }
@@ -63,7 +72,7 @@ public class Atendente {
 
     public void gravarVendasPrimeiraSemna(String valor) {
         var valorFormatado = formatarValor(valor);
-        this.somarValor(0, this.vendas.get(0), new BigDecimal(valorFormatado));
+        this.somarValor(this.PRIMEIRA_SEMANA, this.vendas.get(this.PRIMEIRA_SEMANA), new BigDecimal(valorFormatado));
         this.totalVendas = this.totalVendas.add(new BigDecimal(valorFormatado));
     }
 
@@ -95,6 +104,48 @@ public class Atendente {
         var valorFormatado = formatarValor(valor);
         this.somarValor(5, this.vendas.get(5), new BigDecimal(valorFormatado));
         this.totalVendas = this.totalVendas.add(new BigDecimal(valorFormatado));
+    }
+
+    public void gravarVendasPrimeiraSemna(String valor, int atendimentos) {
+        var valorFormatado = formatarValor(valor);
+        this.somarValor(this.PRIMEIRA_SEMANA, this.vendas.get(this.PRIMEIRA_SEMANA), new BigDecimal(valorFormatado));
+        this.totalVendas = this.totalVendas.add(new BigDecimal(valorFormatado));
+        this.atendimentos.set(this.PRIMEIRA_SEMANA, atendimentos);
+    }
+
+    public void gravarVendasSegundaSemna(String valor, int atendimentos) {
+        var valorFormatado = formatarValor(valor);
+        this.somarValor(this.SEGUNDA_SEMANA, this.vendas.get(this.SEGUNDA_SEMANA), new BigDecimal(valorFormatado));
+        this.totalVendas = this.totalVendas.add(new BigDecimal(valorFormatado));
+        this.atendimentos.set(this.SEGUNDA_SEMANA, atendimentos);
+    }
+
+    public void gravarVendasTerceiraSemna(String valor, int atendimentos) {
+        var valorFormatado = formatarValor(valor);
+        this.somarValor(this.TERCEIRA_SEMANA, this.vendas.get(this.TERCEIRA_SEMANA), new BigDecimal(valorFormatado));
+        this.totalVendas = this.totalVendas.add(new BigDecimal(valorFormatado));
+        this.atendimentos.set(this.TERCEIRA_SEMANA, atendimentos);
+    }
+
+    public void gravarVendasQuartaSemna(String valor, int atendimentos) {
+        var valorFormatado = formatarValor(valor);
+        this.somarValor(this.QUARTA_SEMANA, this.vendas.get(this.QUARTA_SEMANA), new BigDecimal(valorFormatado));
+        this.totalVendas = this.totalVendas.add(new BigDecimal(valorFormatado));
+        this.atendimentos.set(this.QUARTA_SEMANA, atendimentos);
+    }
+
+    public void gravarVendasQuintaSemna(String valor, int atendimentos) {
+        var valorFormatado = formatarValor(valor);
+        this.somarValor(this.QUINTA_SEMANA, this.vendas.get(this.QUINTA_SEMANA), new BigDecimal(valorFormatado));
+        this.totalVendas = this.totalVendas.add(new BigDecimal(valorFormatado));
+        this.atendimentos.set(this.QUINTA_SEMANA, atendimentos);
+    }
+
+    public void gravarVendasSextaSemna(String valor, int atendimentos) {
+        var valorFormatado = formatarValor(valor);
+        this.somarValor(this.SEXTA_SEMANA, this.vendas.get(this.SEXTA_SEMANA), new BigDecimal(valorFormatado));
+        this.totalVendas = this.totalVendas.add(new BigDecimal(valorFormatado));
+        this.atendimentos.set(this.SEXTA_SEMANA, atendimentos);
     }
 
     private String formatarValor(String valor) {

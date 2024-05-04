@@ -77,9 +77,9 @@ public class Principal {
         var valeria = new Atendente("Valéria", ELoja.CASA);
         var camilaCasa = new Atendente("Camila Casa", ELoja.CASA);
 
-        costa.gravarVendasPrimeiraSemna("0,00");
-        grasielly.gravarVendasPrimeiraSemna("0,00");
-        isabele.gravarVendasPrimeiraSemna("0,00");
+        costa.gravarVendasPrimeiraSemna("1000,00", 10);
+        grasielly.gravarVendasPrimeiraSemna("2000,00", 9);
+        isabele.gravarVendasPrimeiraSemna("3000,00", 8);
         janaina.gravarVendasPrimeiraSemna("0,00");
         julia.gravarVendasPrimeiraSemna("0,00");
         kawan.gravarVendasPrimeiraSemna("0,00");
@@ -205,9 +205,9 @@ public class Principal {
 
         //SONHO DE BEBÊ
 
-        bruna.gravarVendasPrimeiraSemna("0,00");
-        camila.gravarVendasPrimeiraSemna("0,00");
-        karol.gravarVendasPrimeiraSemna("0,00");
+        bruna.gravarVendasPrimeiraSemna("1000,00", 10);
+        camila.gravarVendasPrimeiraSemna("2000,00", 9);
+        karol.gravarVendasPrimeiraSemna("3000,00", 8);
         sara.gravarVendasPrimeiraSemna("0,00");
         lojaSonho.gravarVendasPrimeiraSemna("0,00");
 
