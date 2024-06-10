@@ -109,43 +109,43 @@ public class Atendente {
     public void gravarVendasPrimeiraSemna(String valor, int atendimentos) {
         var valorFormatado = formatarValor(valor);
         this.somarValor(this.PRIMEIRA_SEMANA, this.vendas.get(this.PRIMEIRA_SEMANA), new BigDecimal(valorFormatado));
+        this.somarAtendimentos(this.PRIMEIRA_SEMANA, atendimentos);
         this.totalVendas = this.totalVendas.add(new BigDecimal(valorFormatado));
-        this.atendimentos.set(this.PRIMEIRA_SEMANA, atendimentos);
     }
 
     public void gravarVendasSegundaSemna(String valor, int atendimentos) {
         var valorFormatado = formatarValor(valor);
         this.somarValor(this.SEGUNDA_SEMANA, this.vendas.get(this.SEGUNDA_SEMANA), new BigDecimal(valorFormatado));
+        this.somarAtendimentos(this.SEGUNDA_SEMANA, atendimentos);
         this.totalVendas = this.totalVendas.add(new BigDecimal(valorFormatado));
-        this.atendimentos.set(this.SEGUNDA_SEMANA, atendimentos);
     }
 
     public void gravarVendasTerceiraSemna(String valor, int atendimentos) {
         var valorFormatado = formatarValor(valor);
         this.somarValor(this.TERCEIRA_SEMANA, this.vendas.get(this.TERCEIRA_SEMANA), new BigDecimal(valorFormatado));
+        this.somarAtendimentos(this.TERCEIRA_SEMANA, atendimentos);
         this.totalVendas = this.totalVendas.add(new BigDecimal(valorFormatado));
-        this.atendimentos.set(this.TERCEIRA_SEMANA, atendimentos);
     }
 
     public void gravarVendasQuartaSemna(String valor, int atendimentos) {
         var valorFormatado = formatarValor(valor);
         this.somarValor(this.QUARTA_SEMANA, this.vendas.get(this.QUARTA_SEMANA), new BigDecimal(valorFormatado));
+        this.somarAtendimentos(this.QUARTA_SEMANA, atendimentos);
         this.totalVendas = this.totalVendas.add(new BigDecimal(valorFormatado));
-        this.atendimentos.set(this.QUARTA_SEMANA, atendimentos);
     }
 
     public void gravarVendasQuintaSemna(String valor, int atendimentos) {
         var valorFormatado = formatarValor(valor);
         this.somarValor(this.QUINTA_SEMANA, this.vendas.get(this.QUINTA_SEMANA), new BigDecimal(valorFormatado));
+        this.somarAtendimentos(this.QUINTA_SEMANA, atendimentos);
         this.totalVendas = this.totalVendas.add(new BigDecimal(valorFormatado));
-        this.atendimentos.set(this.QUINTA_SEMANA, atendimentos);
     }
 
     public void gravarVendasSextaSemna(String valor, int atendimentos) {
         var valorFormatado = formatarValor(valor);
         this.somarValor(this.SEXTA_SEMANA, this.vendas.get(this.SEXTA_SEMANA), new BigDecimal(valorFormatado));
+        this.somarAtendimentos(this.SEXTA_SEMANA, atendimentos);
         this.totalVendas = this.totalVendas.add(new BigDecimal(valorFormatado));
-        this.atendimentos.set(this.SEXTA_SEMANA, atendimentos);
     }
 
     private String formatarValor(String valor) {
@@ -155,6 +155,12 @@ public class Atendente {
     private void somarValor(int indice, BigDecimal valorAtual, BigDecimal novoValor) {
         var valorSomado = valorAtual.add(novoValor);
         this.vendas.set(indice, valorSomado);
+    }
+
+    private void somarAtendimentos(int indice, int novoValor) {
+        var quantidadeAtualDeAtendimentos = this.atendimentos.get(indice);
+        var quantidadeDeAtendimentoAtualizado = quantidadeAtualDeAtendimentos + novoValor;
+        this.atendimentos.set(indice, quantidadeDeAtendimentoAtualizado);
     }
 
     @Override
